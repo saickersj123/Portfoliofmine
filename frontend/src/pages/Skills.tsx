@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { calculateSkillStats, getProficiencyColor, getProficiencyText, skillCategories, calculateExperienceYears, calculateProjectTechnologies, projects } from '../lib/utils'
+import { calculateSkillStats, getProficiencyText, skillCategories, calculateExperienceYears, calculateProjectTechnologies, projects } from '../lib/utils'
 import { 
   Cloud, 
   Server, 

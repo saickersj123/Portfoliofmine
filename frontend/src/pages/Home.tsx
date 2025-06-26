@@ -228,7 +228,7 @@ const Home = () => {
                     <Icon className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-lg font-semibold mb-3">{highlight.title}</h3>
-                  <p className="text-foreground/80 text-left leading-relaxed">
+                  <p className="text-foreground/80 text-center leading-relaxed">
                     {highlight.description}
                   </p>
                 </div>
