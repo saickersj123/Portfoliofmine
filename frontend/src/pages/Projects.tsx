@@ -1,8 +1,9 @@
-import { ExternalLink, Github, Code } from 'lucide-react'
-import { calculateProjectStats, projects } from '../lib/utils'
+import { ExternalLink, Github } from 'lucide-react'
+import { calculateProjectStats, calculateProjectTechnologies, projects} from '../lib/utils'
 
 const Projects = () => {
   const projectStats = calculateProjectStats(projects)
+  const totalTechnologies = calculateProjectTechnologies(projects)
 
   const getCategoryColor = (category: string) => {
     const colors = {
@@ -27,7 +28,7 @@ const Projects = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">Projects</h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-center leading-relaxed text-balance indent-2">
             A showcase of my technical projects, from cloud infrastructure and cybersecurity 
             platforms to web applications and system programming solutions.
           </p>
@@ -44,13 +45,13 @@ const Projects = () => {
               >
                 <div className="aspect-video bg-muted relative">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <Code className="h-16 w-16 text-muted-foreground/50" />
+                    <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
                   </div>
                 </div>
                 
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl font-bold">{project.title}</h3>
+                    <h3 className="text-xl font-bold text-left">{project.title}</h3>
                     <div className="flex space-x-2">
                       {project.github && (
                         <a
@@ -75,7 +76,7 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
+                  <p className="text-muted-foreground mb-4 leading-relaxed text-left text-balance">
                     {project.description}
                   </p>
 
@@ -138,13 +139,13 @@ const Projects = () => {
               >
                 <div className="aspect-video bg-muted relative">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <Code className="h-12 w-12 text-muted-foreground/50" />
+                    <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
                   </div>
                 </div>
                 
                 <div className="p-4">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-lg font-semibold">{project.title}</h3>
+                    <h3 className="text-lg font-semibold text-left">{project.title}</h3>
                     <div className="flex space-x-1">
                       {project.github && (
                         <a
@@ -169,7 +170,7 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-3">
+                  <p className="text-sm text-muted-foreground mb-3 line-clamp-3 text-left text-balance">
                     {project.description}
                   </p>
 
@@ -226,7 +227,7 @@ const Projects = () => {
                 <div className="text-sm text-muted-foreground">Featured Projects</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">{projectStats.uniqueTechnologies}+</div>
+                <div className="text-3xl font-bold text-primary mb-2">{totalTechnologies}+</div>
                 <div className="text-sm text-muted-foreground">Technologies Used</div>
               </div>
               <div className="text-center">

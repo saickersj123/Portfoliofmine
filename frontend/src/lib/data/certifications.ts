@@ -22,10 +22,5 @@ export const certifications: Certification[] = [
     name: 'Craftsman Information Processing (Equivalent to CompTIA A+)',
     year: '2022',
     icon: 'Server'
-  },
-  {
-    name: 'Network Advisor 2',
-    year: '2019',
-    icon: 'Shield'
   }
-] 
+]

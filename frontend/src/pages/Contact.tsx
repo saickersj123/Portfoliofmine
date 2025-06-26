@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Mail, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react'
+import { contactData } from '../lib/data'
+import type { ContactInfo, SocialLink } from '../lib/data'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,41 +13,15 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const contactInfo = [
-    {
-      label: 'Location',
-      value: 'Toronto, Canada',
-      href: '#',
-      icon: MapPin,
-    },
-    {
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/flynn-park-4007052a3',
-      href: 'https://www.linkedin.com/in/flynn-park-4007052a3',
-      icon: Linkedin,
-    },
-    {
-      label: 'GitHub',
-      value: 'github.com/saickersj123',
-      href: 'https://github.com/saickersj123',
-      icon: Github,
-    },
-  ]
-
-  const socialLinks = [
-    {
-      name: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/flynn-park-4007052a3',
-      icon: Linkedin,
-      description: 'Connect professionally and view my experience',
-    },
-    {
-      name: 'GitHub',
-      href: 'https://github.com/saickersj123',
-      icon: Github,
-      description: 'View my projects and contributions',
-    },
-  ]
+  // Icon mapping
+  const iconMap: { [key: string]: any } = {
+    Mail,
+    MapPin,
+    Github,
+    Linkedin,
+    Send,
+    CheckCircle,
+  }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -78,39 +54,40 @@ const Contact = () => {
   }
 
   return (
-    <div className="min-h-screen py-20">
+    <div className="min-h-screen py-12 bg-gradient-to-br from-background via-background to-muted/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-4">Get In Touch</h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            I'm actively seeking opportunities in DevOps/Cloud, System Administration, IT Tech Support, and Cybersecurity roles. 
-            Let's discuss how we can work together to achieve your goals.
+        <div className="text-center mb-12">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            {contactData.header.title}
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-center leading-relaxed text-balance indent-2">
+            {contactData.header.subtitle}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Left Column - Contact Information */}
+          <div className="space-y-6">
+            <div className="bg-card/50 backdrop-blur-sm border rounded-xl p-6 shadow-lg">
+              <h2 className="text-xl font-bold mb-5 text-primary">Contact Information</h2>
               <div className="space-y-4">
-                {contactInfo.map((info) => {
-                  const Icon = info.icon
+                {contactData.contactInfo.map((info: ContactInfo) => {
+                  const Icon = iconMap[info.icon]
                   return (
                     <a
                       key={info.label}
                       href={info.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-4 p-4 rounded-lg border bg-card hover:shadow-md transition-shadow"
+                      className="flex items-center space-x-4 p-4 rounded-lg border bg-background/50 hover:bg-background hover:shadow-lg transition-all duration-300 group"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                         <Icon className="h-5 w-5 text-primary" />
                       </div>
                       <div>
-                        <div className="font-medium">{info.label}</div>
-                        <div className="text-muted-foreground">{info.value}</div>
+                        <div className="font-semibold text-foreground text-left">{info.label}</div>
+                        <div className="text-muted-foreground group-hover:text-foreground transition-colors text-sm">{info.value}</div>
                       </div>
                     </a>
                   )
@@ -118,220 +95,165 @@ const Contact = () => {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Connect With Me</h2>
+            <div className="bg-card/50 backdrop-blur-sm border rounded-xl p-6 shadow-lg">
+              <h2 className="text-xl font-bold mb-5 text-primary">Connect With Me</h2>
               <div className="space-y-4">
-                {socialLinks.map((link) => {
-                  const Icon = link.icon
+                {contactData.socialLinks.map((link: SocialLink) => {
+                  const Icon = iconMap[link.icon]
                   return (
                     <a
                       key={link.name}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-4 p-4 rounded-lg border bg-card hover:shadow-md transition-shadow"
+                      className="flex items-center space-x-4 p-4 rounded-lg border bg-background/50 hover:bg-background hover:shadow-lg transition-all duration-300 group"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                         <Icon className="h-5 w-5 text-primary" />
                       </div>
                       <div>
-                        <div className="font-medium">{link.name}</div>
-                        <div className="text-muted-foreground">{link.description}</div>
+                        <div className="font-semibold text-foreground text-left">{link.name}</div>
+                        <div className="text-muted-foreground group-hover:text-foreground transition-colors text-sm">{link.description}</div>
                       </div>
                     </a>
                   )
                 })}
               </div>
             </div>
-
-            <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl p-6">
-              <h3 className="text-lg font-semibold mb-3">Roles I'm Seeking</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• DevOps Engineer / Cloud Engineer</li>
-                <li>• System Administrator</li>
-                <li>• IT Technical Support Specialist</li>
-                <li>• Cybersecurity Analyst / Engineer</li>
-                <li>• Infrastructure Engineer</li>
-                <li>• Site Reliability Engineer (SRE)</li>
-              </ul>
-            </div>
-
-            <div className="bg-gradient-to-r from-blue-500/10 to-blue-500/5 rounded-xl p-6">
-              <h3 className="text-lg font-semibold mb-3">Why Choose Me?</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• 4+ years of hands-on IT experience</li>
-                <li>• Military-grade security background</li>
-                <li>• Proven track record of system improvements</li>
-                <li>• Strong problem-solving and troubleshooting skills</li>
-                <li>• Continuous learner with current certifications</li>
-              </ul>
-            </div>
           </div>
 
-          {/* Contact Form */}
-          <div>
-            <h2 className="text-2xl font-bold mb-6">Send Me a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+          {/* Right Column - Contact Form */}
+          <div className="space-y-6">
+
+            <div className="bg-card/50 backdrop-blur-sm border rounded-xl p-6 shadow-lg">
+              <h2 className="text-xl font-bold mb-5 text-primary">{contactData.form.title}</h2>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold mb-2 text-foreground text-left indent-2">
+                      Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border bg-background/50 focus:bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold mb-2 text-foreground text-left indent-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border bg-background/50 focus:bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300"
+                      placeholder="your.email@company.com"
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Name *
+                  <label htmlFor="subject" className="block text-sm font-semibold mb-2 text-foreground text-left indent-2">
+                    Subject *
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="form-input"
-                    placeholder="Your name"
+                    className="w-full px-4 py-3 rounded-lg border bg-background/50 focus:bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300"
+                    placeholder="Job opportunity, project discussion, etc."
                   />
                 </div>
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email *
+                  <label htmlFor="message" className="block text-sm font-semibold mb-2 text-foreground text-left indent-2">
+                    Message *
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
                     onChange={handleInputChange}
                     required
-                    className="form-input"
-                    placeholder="your.email@company.com"
+                    rows={6}
+                    className="w-full px-4 py-3 rounded-lg border bg-background/50 focus:bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300 resize-none"
+                    placeholder="Tell me about the opportunity, role requirements, or any questions you have!"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                  Subject *
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input"
-                  placeholder="Job opportunity, project discussion, etc."
-                />
-              </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting || isSubmitted}
+                  className="w-full flex items-center justify-center px-6 py-3 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-semibold rounded-lg hover:from-primary/90 hover:to-primary/80 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="spinner mr-2" />
+                      Sending...
+                    </>
+                  ) : isSubmitted ? (
+                    <>
+                      <CheckCircle className="h-5 w-5 mr-2" />
+                      Message Sent!
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-5 w-5 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="form-textarea"
-                  placeholder="Tell me about the opportunity, role requirements, or any questions you have!"
-                />
-              </div>
+              {isSubmitted && (
+                <div className="mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                  <p className="text-green-600 text-sm font-medium">
+                    {contactData.form.successMessage}
+                  </p>
+                </div>
+              )}
 
-              <button
-                type="submit"
-                disabled={isSubmitting || isSubmitted}
-                className="w-full flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="spinner mr-2" />
-                    Sending...
-                  </>
-                ) : isSubmitted ? (
-                  <>
-                    <CheckCircle className="h-4 w-4 mr-2" />
-                    Message Sent!
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-4 w-4 mr-2" />
-                    Send Message
-                  </>
-                )}
-              </button>
-            </form>
-
-            {isSubmitted && (
-              <div className="mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                <p className="text-green-600 text-sm">
-                  Thank you for your message! I'll get back to you within 24 hours.
+              <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                <p className="text-blue-600 text-sm font-medium">
+                  <strong>Note:</strong> {contactData.form.note}
                 </p>
               </div>
-            )}
-
-            <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-              <p className="text-blue-600 text-sm">
-                <strong>Note:</strong> I'm currently available for immediate start and open to both full-time and contract opportunities.
-              </p>
             </div>
           </div>
         </div>
 
-        {/* Additional Information */}
-        <section className="mt-20">
-          <div className="bg-card border rounded-xl p-8">
-            <h2 className="text-2xl font-bold mb-6 text-center">What I Bring to Your Team</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <h3 className="text-lg font-semibold mb-2">Technical Expertise</h3>
-                <p className="text-sm text-muted-foreground">
-                  Deep knowledge in cloud platforms, automation, and system administration with proven results in improving infrastructure reliability.
-                </p>
-              </div>
-              <div className="text-center">
-                <h3 className="text-lg font-semibold mb-2">Security Mindset</h3>
-                <p className="text-sm text-muted-foreground">
-                  Military background in IT security with experience in hardening systems, access control, and compliance management.
-                </p>
-              </div>
-              <div className="text-center">
-                <h3 className="text-lg font-semibold mb-2">Problem Solver</h3>
-                <p className="text-sm text-muted-foreground">
-                  Strong troubleshooting skills with a track record of resolving complex technical issues and optimizing system performance.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Quick Contact */}
-        <section className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl p-8">
-            <h3 className="text-2xl font-bold mb-4">Ready to Discuss Opportunities?</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Whether you need a DevOps engineer, system administrator, or cybersecurity specialist, 
-              I'm ready to contribute to your team's success.
+        {/* Ready to Discuss Opportunities - Repositioned */}
+        <div className="mt-8">
+          <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 rounded-xl p-6 border border-primary/20 shadow-lg">
+            <h3 className="text-lg font-bold mb-4 text-primary">{contactData.callToAction.title}</h3>
+            <p className="text-muted-foreground mb-5 text-sm">
+              {contactData.callToAction.description}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => document.getElementById('message')?.focus()}
-                className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
-              >
-                <Mail className="h-4 w-4 mr-2" />
-                Send Message
-              </button>
+            <div className="flex justify-center">
               <a
                 href="https://www.linkedin.com/in/flynn-park-4007052a3"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 border border-border bg-background text-foreground font-medium rounded-lg hover:bg-accent transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-primary/20 bg-background/50 text-foreground font-semibold rounded-lg hover:bg-background hover:border-primary/40 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 <Linkedin className="h-4 w-4 mr-2" />
-                View LinkedIn
+                {contactData.callToAction.buttonText}
               </a>
             </div>
           </div>
-        </section>
+        </div>
       </div>
     </div>
   )

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Moon, Sun, Menu, X, Code, Briefcase, User, Phone, Home } from 'lucide-react'
 import { useTheme } from './theme-provider'
+import logo from '../assets/logo.png'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -28,7 +29,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <Code className="h-5 w-5 text-primary-foreground" />
+              <img src={logo} alt="Logo" className="h-full w-full object-cover" />
             </div>
             <span className="text-xl font-bold">Flynn Park</span>
           </Link>

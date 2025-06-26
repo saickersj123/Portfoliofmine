@@ -46,8 +46,8 @@ const Experience = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">Professional Experience</h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A comprehensive overview of my professional journey, from military IT support 
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-center leading-relaxed text-balance">
+            A comprehensive overview of my professional journey, from military IT support <br></br>
             to cloud engineering and leadership roles in software development.
           </p>
         </div>
@@ -69,8 +69,8 @@ const Experience = () => {
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <h2 className="text-xl lg:text-2xl font-bold">{experience.title}</h2>
-                      <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                      <h2 className="text-xl lg:text-2xl font-bold text-left">{experience.title}</h2>
+                      <div className="flex items-center space-x-4 text-sm text-muted-foreground mt-1">
                         <div className="flex items-center space-x-1">
                           <Building className="h-4 w-4" />
                           <span>{experience.company}</span>
@@ -102,18 +102,18 @@ const Experience = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-muted-foreground mb-6 leading-relaxed text-left">
                   {experience.description}
                 </p>
 
                 {/* Key Achievements */}
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3">Key Achievements</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-left indent-2">Key Achievements</h3>
                   <ul className="space-y-2">
                     {experience.achievements.map((achievement, achievementIndex) => (
                       <li key={achievementIndex} className="flex items-start space-x-3">
-                        <span className="text-primary mt-1">•</span>
-                        <span className="text-sm text-muted-foreground leading-relaxed">
+                        <span className="text-primary">•</span>
+                        <span className="text-sm text-muted-foreground leading-relaxed text-left">
                           {achievement}
                         </span>
                       </li>
@@ -123,7 +123,7 @@ const Experience = () => {
 
                 {/* Technologies */}
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">Technologies & Skills</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-left indent-2">Technologies & Skills</h3>
                   <div className="flex flex-wrap gap-2">
                     {experience.technologies.map((tech, techIndex) => (
                       <span
@@ -154,7 +154,7 @@ const Experience = () => {
                 <div className="text-sm text-muted-foreground">Roles</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">3</div>
+                <div className="text-3xl font-bold text-primary mb-2">2</div>
                 <div className="text-sm text-muted-foreground">Countries</div>
               </div>
               <div className="text-center">
@@ -169,57 +169,57 @@ const Experience = () => {
         <section className="mt-16">
           <h2 className="text-2xl font-bold mb-8 text-center">Key Highlights</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-card border rounded-lg p-6 text-center">
+            <div className="bg-card border rounded-lg p-6">
               <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
                 <Cloud className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Cloud Infrastructure</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-lg font-semibold mb-2 text-center">Cloud Infrastructure</h3>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
                 Designed and implemented scalable AWS infrastructure with Terraform and CI/CD pipelines.
               </p>
             </div>
-            <div className="bg-card border rounded-lg p-6 text-center">
+            <div className="bg-card border rounded-lg p-6">
               <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center mx-auto mb-4">
                 <Users className="h-6 w-6 text-green-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Leadership</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-lg font-semibold mb-2 text-center">Leadership</h3>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
                 Founded and led developer club, mentoring 15+ members and managing multiple projects.
               </p>
             </div>
-            <div className="bg-card border rounded-lg p-6 text-center">
+            <div className="bg-card border rounded-lg p-6">
               <div className="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center mx-auto mb-4">
                 <Shield className="h-6 w-6 text-red-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Cybersecurity</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-lg font-semibold mb-2 text-center">Cybersecurity</h3>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
                 Developed cybersecurity training platforms and implemented security best practices.
               </p>
             </div>
-            <div className="bg-card border rounded-lg p-6 text-center">
+            <div className="bg-card border rounded-lg p-6">
               <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
                 <Server className="h-6 w-6 text-purple-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">System Administration</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-lg font-semibold mb-2 text-center">System Administration</h3>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
                 Managed Linux-based servers, network infrastructure, and IT support operations.
               </p>
             </div>
-            <div className="bg-card border rounded-lg p-6 text-center">
+            <div className="bg-card border rounded-lg p-6">
               <div className="w-12 h-12 rounded-lg bg-yellow-500/10 flex items-center justify-center mx-auto mb-4">
                 <Award className="h-6 w-6 text-yellow-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Recognition</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-lg font-semibold mb-2 text-center">Recognition</h3>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
                 Received "Best Project of the Year" and "Best Software Club of the Year" awards.
               </p>
             </div>
-            <div className="bg-card border rounded-lg p-6 text-center">
+            <div className="bg-card border rounded-lg p-6">
               <div className="w-12 h-12 rounded-lg bg-teal-500/10 flex items-center justify-center mx-auto mb-4">
                 <Code className="h-6 w-6 text-teal-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Education</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-lg font-semibold mb-2 text-center">Education</h3>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
                 Teaching assistant for C Programming, helping 90+ students with programming fundamentals.
               </p>
             </div>
@@ -230,7 +230,7 @@ const Experience = () => {
         <section className="mt-16 text-center">
           <div className="bg-card border rounded-xl p-8">
             <h3 className="text-2xl font-bold mb-4">Ready to Work Together?</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto text-center leading-relaxed text-balance indent-2">
               I bring a unique combination of technical expertise, leadership experience, 
               and proven track record of delivering results. Let's discuss how I can 
               contribute to your organization's success.

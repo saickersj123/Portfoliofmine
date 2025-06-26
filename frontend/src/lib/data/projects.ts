@@ -1,3 +1,10 @@
+import branchesGPT from '../../assets/branchesgpt.png'
+import branchesSPK from '../../assets/branchesspk.png'
+import branchesWEB from '../../assets/branches.png'
+import hackthisout from '../../assets/hackthisout.png'
+import myassembler from '../../assets/myassembler.png'
+import awslambdadevops from '../../assets/awslambdadevops.png'
+
 export interface Project {
   title: string
   description: string
@@ -13,8 +20,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: 'AWS Lambda DevOps',
-    description: 'AWS Lambda DevOps Framework with Jenkins CI/CD pipeline and automated deployment with Terraform',
-    image: '/api/placeholder/600/400',
+    description: 'AWS Lambda DevOps Framework with Jenkins CI/CD pipeline and automated deployment using Terraform',
+    image: awslambdadevops,
     technologies: ['AWS', 'DevOps', 'Terraform', 'Jenkins', 'Docker', 'Bash' ],
     categories: ['Cloud Infrastructure', 'DevOps'],
     github: 'https://github.com/saickersj123/AWS-Lambda-DevOps',
@@ -29,7 +36,7 @@ export const projects: Project[] = [
   {
     title: 'The Branches',
     description: 'Founded and led developer club managing multiple projects, CI/CD pipelines, and mentoring 15+ members.',
-    image: '/api/placeholder/600/400',
+    image: branchesWEB,
     technologies: ['Git', 'GitHub Actions', 'Docker', 'Linux', 'Mentoring'],
     categories: ['Leadership', 'DevOps', 'Education'],
     github: null,
@@ -44,14 +51,14 @@ export const projects: Project[] = [
   {
     title: 'HackThisOut',
     description: 'Full-stack cybersecurity training platform developed with automated AWS testbed, vulnerability scanning, and educational content. Awarded "Best Project of the Year".',
-    image: '/api/placeholder/600/400',
+    image: hackthisout,
     technologies: ['AWS', 'Node.js', 'Docker', 'CI/CD', 'Security Tools', 'Terraform', 'VPN'],
     categories: ['Cybersecurity', 'Cloud Infrastructure', 'DevOps', 'Education'],
     github: 'https://github.com/saickersj123/Hack-This-Out',
     live: null,
     featured: true,
     stats: {
-      students: '150+',
+      users: '150+',
       modules: '10+',
       award: 'Best Project'
     }
@@ -59,7 +66,7 @@ export const projects: Project[] = [
   {
     title: 'BranchesGPT',
     description: 'Web-based AI chatbot using MERN stack and OpenAI API for conversational AI. Features include real-time chat, user authentication, and intelligent responses.',
-    image: '/api/placeholder/600/400',
+    image: branchesGPT,
     technologies: ['MongoDB', 'Express.js', 'React', 'OpenAI API'],
     categories: ['Web Development', 'AI/ML', 'Full-Stack'],
     github: 'https://github.com/saickersj123/BranchesGPT',
@@ -74,7 +81,7 @@ export const projects: Project[] = [
   {
     title: 'BranchesWEB',
     description: 'Full-stack web application for The Branches developer club. Includes user management, project showcase, and collaborative features.',
-    image: '/api/placeholder/600/400',
+    image: branchesWEB,
     technologies: ['MERN Stack', 'Git/GitHub', 'CI/CD'],
     categories: ['Web Development', 'Full-Stack', 'DevOps'],
     github: 'https://github.com/saickersj123/BranchesWEB',
@@ -88,7 +95,7 @@ export const projects: Project[] = [
   {
     title: 'BranchesSPK',
     description: 'Speech recognition and processing application with real-time audio analysis and text-to-speech capabilities.',
-    image: '/api/placeholder/600/400',
+    image: branchesSPK,
     technologies: ['Fine-Tuned Model', 'Speech Recognition', 'Audio Processing','MERN Stack'],
     categories: ['AI/ML', 'Audio Processing', 'Web Development'],
     github: 'https://github.com/saickersj123/BranchesSPK',
@@ -101,12 +108,12 @@ export const projects: Project[] = [
     }
   },
   {
-    title: 'SIC/XE Assembler',
+    title: 'My Assembler',
     description: 'System programming project implementing a complete SIC/XE assembler in C with pass one and pass two functionality.',
-    image: '/api/placeholder/600/400',
+    image: myassembler,
     technologies: ['C', 'Assembly', 'System Programming', 'Memory Management'],
     categories: ['System Programming', 'Low-Level Development'],
-    github: 'https://github.com/saickersj123/sic-assembler',
+    github: 'https://github.com/saickersj123/My-Assembler',
     live: null,
     featured: true,
     stats: {

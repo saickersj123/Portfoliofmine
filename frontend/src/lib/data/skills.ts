@@ -45,10 +45,10 @@ export const skillCategories: SkillCategory[] = [
     name: 'Networking',
     icon: 'Network',
     skills: [
-      { name: 'TCP/IP', proficiency: 78, details: 'Protocol Understanding, Network Configuration, Troubleshooting, Packet Analysis' },
-      { name: 'DNS', proficiency: 80, details: 'Domain Management, Record Configuration, Resolution, Security' },
-      { name: 'VPN', proficiency: 75, details: 'Site-to-site VPN, Remote Access, Security Configuration, Troubleshooting' },
-      { name: 'DHCP', proficiency: 70, details: 'IP Address Management, Scope Configuration, Leases, Failover' },
+      { name: 'TCP/IP', proficiency: 68, details: 'Protocol Understanding, Network Configuration, Troubleshooting, Packet Analysis' },
+      { name: 'DNS', proficiency: 65, details: 'Domain Management, Record Configuration, Resolution, Security' },
+      { name: 'VPN', proficiency: 65, details: 'Site-to-site VPN, Remote Access, Security Configuration, Troubleshooting' },
+      { name: 'DHCP', proficiency: 67, details: 'IP Address Management, Scope Configuration, Leases, Failover' },
     ],
   },
   {
@@ -75,7 +75,7 @@ export const skillCategories: SkillCategory[] = [
     name: 'Web Technologies',
     icon: 'Code',
     skills: [
-      { name: 'HTML/CSS', proficiency: 75, details: 'Semantic HTML, Responsive Design, CSS Frameworks, Accessibility' },
+      { name: 'HTML/CSS', proficiency: 70, details: 'Semantic HTML, Responsive Design, CSS Frameworks, Accessibility' },
       { name: 'JavaScript', proficiency: 70, details: 'Frontend Development, Node.js, API Integration, DOM Manipulation' },
       { name: 'React', proficiency: 50, details: 'Frontend Development, Component Architecture, State Management, Hooks' },
       { name: 'Node.js', proficiency: 68, details: 'Backend Development, Express.js, API Development, Package Management' },

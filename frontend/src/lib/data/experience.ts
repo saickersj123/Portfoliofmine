@@ -21,7 +21,7 @@ export const experiences: Experience[] = [
       duration: '10 months',
       type: 'Contract',
       icon: 'Cloud',
-      description: 'Led cloud infrastructure and DevOps initiatives for electric vehicle charging platform.',
+      description: 'Automated cloud infrastructure deployment and CI/CD pipelines for Shared Power Bank Rental Service.',
       achievements: [
         'Designed and implemented scalable, automated infrastructure solutions using Terraform, effectively accommodating client requirements and enabling continuous enhancements',
         'Architected secure, reliable cloud environments on AWS, leveraging EC2, Lambda, API Gateway, VPC, and DynamoDB, prioritizing performance optimization and compliance',

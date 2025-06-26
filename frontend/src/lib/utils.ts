@@ -76,9 +76,8 @@ export function calculateProjectStats(projectsData: typeof projects) {
   const totalProjects = projectsData.length
   const featuredProjects = projectsData.filter(project => project.featured).length
   
-  // Get unique technologies across all projects
-  const allTechnologies = projectsData.flatMap(project => project.technologies)
-  const uniqueTechnologies = [...new Set(allTechnologies)]
+  // Get unique technologies across all projects using the dedicated function
+  const uniqueTechnologies = calculateProjectTechnologies(projectsData)
   
   // Calculate total users/students served
   let totalUsers = 0
@@ -102,7 +101,7 @@ export function calculateProjectStats(projectsData: typeof projects) {
   return {
     totalProjects,
     featuredProjects,
-    uniqueTechnologies: uniqueTechnologies.length,
+    uniqueTechnologies,
     totalUsers: totalUsers > 0 ? `${totalUsers}+` : '100+'
   }
 }
@@ -110,12 +109,12 @@ export function calculateProjectStats(projectsData: typeof projects) {
 // Calculate skill statistics
 export function calculateSkillStats(skillCategoriesData: typeof skillCategories) {
   const totalCategories = skillCategoriesData.length
-  const allSkills = skillCategoriesData.flatMap(category => category.skills)
-  const totalTechnologies = allSkills.length
+  const totalTechnologies = calculateSkillTechnologies(skillCategoriesData)
   
   // Calculate average proficiency
+  const allSkills = skillCategoriesData.flatMap(category => category.skills)
   const totalProficiency = allSkills.reduce((sum, skill) => sum + skill.proficiency, 0)
-  const averageProficiency = Math.round(totalProficiency / totalTechnologies)
+  const averageProficiency = Math.round(totalProficiency / allSkills.length)
   
   return {
     totalCategories,
@@ -155,16 +154,56 @@ export function getProficiencyText(proficiency: number) {
   return 'Beginner'
 }
 
-// Calculate total unique technologies across all projects and skills
-export function calculateTotalTechnologies(projectsData: typeof projects, skillCategoriesData: typeof skillCategories) {
+// Calculate total unique technologies across all projects, skills, and experience
+export function calculateTotalTechnologies(projectsData: typeof projects, skillCategoriesData: typeof skillCategories, experiencesData: typeof experiences) {
+  // Normalize technology names to handle variations
+  const normalizeTech = (tech: string) => {
+    return tech.toLowerCase()
+      .replace(/[^a-z0-9]/g, '') // Remove special characters
+      .replace(/\s+/g, '') // Remove spaces
+  }
+
+  // Collect technologies from projects
   const projectTechnologies = projectsData.flatMap(project => project.technologies)
+  
+  // Collect technologies from skills
   const skillTechnologies = skillCategoriesData.flatMap(category => 
     category.skills.map((skill) => skill.name)
   )
   
-  const allTechnologies = [...projectTechnologies, ...skillTechnologies]
-  const uniqueTechnologies = [...new Set(allTechnologies)]
+  // Collect technologies from experience
+  const experienceTechnologies = experiencesData.flatMap(experience => experience.technologies)
   
+  // Combine all technologies
+  const allTechnologies = [...projectTechnologies, ...skillTechnologies, ...experienceTechnologies]
+  
+  // Create a map to track normalized names and their original names
+  const techMap = new Map<string, string>()
+  
+  allTechnologies.forEach(tech => {
+    const normalized = normalizeTech(tech)
+    if (!techMap.has(normalized)) {
+      techMap.set(normalized, tech)
+    }
+  })
+  
+  // Return unique count
+  return techMap.size
+}
+
+// Calculate unique technologies for projects only
+export function calculateProjectTechnologies(projectsData: typeof projects) {
+  const allTechnologies = projectsData.flatMap(project => project.technologies)
+  const uniqueTechnologies = [...new Set(allTechnologies)]
+  return uniqueTechnologies.length
+}
+
+// Calculate unique technologies for skills only
+export function calculateSkillTechnologies(skillCategoriesData: typeof skillCategories) {
+  const allTechnologies = skillCategoriesData.flatMap(category => 
+    category.skills.map((skill) => skill.name)
+  )
+  const uniqueTechnologies = [...new Set(allTechnologies)]
   return uniqueTechnologies.length
 }
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { calculateSkillStats, getProficiencyColor, getProficiencyText, skillCategories } from '../lib/utils'
+import { calculateSkillStats, getProficiencyColor, getProficiencyText, skillCategories, calculateExperienceYears, calculateProjectTechnologies, projects } from '../lib/utils'
 import { 
   Cloud, 
   Server, 
@@ -13,6 +13,8 @@ import {
 
 const Skills = () => {
   const skillStats = calculateSkillStats(skillCategories)
+  const experienceYears = calculateExperienceYears()
+  const totalTechnologies = calculateProjectTechnologies(projects)
 
   // Map icon strings to actual icon components
   const iconMap = {
@@ -107,11 +109,11 @@ const Skills = () => {
                 <div className="text-sm text-muted-foreground">Skill Categories</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">{skillStats.totalTechnologies}+</div>
+                <div className="text-3xl font-bold text-primary mb-2">{totalTechnologies}+</div>
                 <div className="text-sm text-muted-foreground">Technologies</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">4+</div>
+                <div className="text-3xl font-bold text-primary mb-2">{experienceYears}+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="text-center">

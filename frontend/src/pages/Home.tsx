@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Download, Github, Linkedin, Code, Cloud, Server, Shield } from 'lucide-react'
+import { ArrowRight, Github, Linkedin, Cloud, Server, Shield } from 'lucide-react'
 import { useEffect } from 'react'
-import { calculateExperienceYears, calculateProjectStats, calculateTotalTechnologies, calculateCertificationStats, projects, certifications, skillCategories } from '../lib/utils'
+import { calculateExperienceYears, calculateProjectStats, calculateProjectTechnologies, calculateCertificationStats, projects, certifications } from '../lib/utils'
+import { profile } from '../lib/data'
 import { useAppStore } from '../store'
 
 const Home = () => {
@@ -31,7 +32,7 @@ const Home = () => {
   const experienceYears = calculateExperienceYears()
 
   const projectStats = calculateProjectStats(projects)
-  const totalTechnologies = calculateTotalTechnologies(projects, skillCategories)
+  const totalTechnologies = calculateProjectTechnologies(projects)
   const certificationStats = calculateCertificationStats(certifications)
 
   const stats = [
@@ -77,7 +78,7 @@ const Home = () => {
               <div className="space-y-4">
                 <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
                   Hi, I'm{' '}
-                  <span className="text-primary">Flynn Park</span>
+                  <span className="text-primary">{profile.name}</span>
                 </h1>
                 <div className="relative">
                   <div className="text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black tracking-wide">
@@ -141,10 +142,8 @@ const Home = () => {
                     } blur-2xl`}
                   />
                 </div>
-                <p className="text-lg text-muted-foreground max-w-2xl text-left">
-                  &nbsp;Passionate about cloud infrastructure, automation, cybersecurity.<br></br>
-                  &nbsp;Currently seeking opportunities in DevOps/Cloud, IT Support, System Administration and Cybersecurity roles. <br></br>
-                  &nbsp;I am a quick learner and always looking to improve my skills.
+                <p className="text-lg text-muted-foreground max-w-2xl text-left leading-relaxed text-balance">
+                  {profile.description}
                 </p>
               </div>
 
@@ -156,19 +155,11 @@ const Home = () => {
                   Get In Touch
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
-                <a
-                  href="/resume/SysadminCV.txt"
-                  download
-                  className="inline-flex items-center justify-center px-6 py-3 border border-border bg-background text-foreground font-medium rounded-lg hover:bg-accent transition-colors"
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Download CV
-                </a>
               </div>
 
               <div className="flex items-center space-x-4">
                 <a
-                  href="https://github.com/saickersj123"
+                  href={profile.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-accent text-muted-foreground hover:text-foreground transition-colors"
@@ -176,7 +167,7 @@ const Home = () => {
                   <Github className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/flynn-park-4007052a3"
+                  href={profile.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-accent text-muted-foreground hover:text-foreground transition-colors"
@@ -185,11 +176,11 @@ const Home = () => {
                 </a>
               </div>
             </div>
-
+            {/* Image */}
             <div className="relative">
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 p-8">
-                <div className="h-full w-full rounded-xl bg-gradient-to-br from-primary/10 to-transparent flex items-center justify-center">
-                  <Code className="h-32 w-32 text-primary/50" />
+                <div className="h-full w-full rounded-full bg-gradient-to-br from-primary/10 to-transparent flex items-center justify-center overflow-hidden"> {/* the img has to be cropped in this container */}
+                  <img src={profile.image.src} alt={profile.image.alt} className="max-w-full max-h-full w-auto h-auto rounded-full object-cover" />
                 </div>
               </div>
             </div>
@@ -198,7 +189,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-16 bg-muted/30 rounded-lg">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
@@ -222,7 +213,7 @@ const Home = () => {
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
               Areas of Expertise
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center text-balance">
               Specialized in cloud infrastructure, system administration, and cybersecurity 
               with a proven track record of improving system reliability and security.
             </p>
@@ -236,13 +227,15 @@ const Home = () => {
                   key={highlight.title}
                   className="p-6 rounded-xl border bg-card hover:shadow-lg transition-shadow"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-primary" />
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold">
+                      {highlight.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    {highlight.title}
-                  </h3>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-left leading-relaxed">
                     {highlight.description}
                   </p>
                 </div>
@@ -253,41 +246,41 @@ const Home = () => {
       </section>
 
       {/* Job Search Focus */}
-      <section className="py-20 bg-gradient-to-r from-blue-500/10 to-blue-500/5">
+      <section className="py-20 bg-gradient-to-r from-blue-500/10 to-blue-500/5 rounded-lg">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
               Currently Seeking Opportunities
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-left leading-relaxed">
               I'm actively looking for roles where I can leverage my technical expertise 
               and problem-solving skills to contribute to your organization's success.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-card border rounded-lg p-6 text-center">
-              <h3 className="text-lg font-semibold mb-2">DevOps Engineer</h3>
-              <p className="text-sm text-muted-foreground">
-                CI/CD pipelines, infrastructure automation, cloud platforms
+            <div className="bg-card border rounded-lg p-6">
+              <h3 className="text-lg font-semibold mb-2 text-center">DevOps Engineer</h3>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
+                CI/CD pipelines,  Cloud platforms, Infrastructure automation
               </p>
             </div>
-            <div className="bg-card border rounded-lg p-6 text-center">
-              <h3 className="text-lg font-semibold mb-2">System Administrator</h3>
-              <p className="text-sm text-muted-foreground">
-                Linux/Unix systems, network administration, performance tuning
+            <div className="bg-card border rounded-lg p-6">
+              <h3 className="text-lg font-semibold mb-2 text-center">System Administrator</h3>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
+                Linux/Unix systems, <br></br>Network administration
               </p>
             </div>
-            <div className="bg-card border rounded-lg p-6 text-center">
-              <h3 className="text-lg font-semibold mb-2">IT Tech Support</h3>
-              <p className="text-sm text-muted-foreground">
-                Technical troubleshooting, user support, system maintenance
+            <div className="bg-card border rounded-lg p-6">
+              <h3 className="text-lg font-semibold mb-2 text-center">IT Tech Support</h3>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
+                 User support, System maintenance, Technical troubleshooting
               </p>
             </div>
-            <div className="bg-card border rounded-lg p-6 text-center">
-              <h3 className="text-lg font-semibold mb-2">Cybersecurity</h3>
-              <p className="text-sm text-muted-foreground">
-                Security hardening, access control, vulnerability management
+            <div className="bg-card border rounded-lg p-6">
+              <h3 className="text-lg font-semibold mb-2 text-center">Cybersecurity</h3>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
+                Vulnerability management, <br></br>Access control, Security hardening
               </p>
             </div>
           </div>
@@ -295,12 +288,12 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="py-20 bg-primary text-primary-foreground rounded-lg">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             Ready to Work Together?
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90 text-left leading-relaxed">
             Let's discuss how I can help you build robust, secure, and scalable 
             infrastructure solutions for your organization.
           </p>

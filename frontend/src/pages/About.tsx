@@ -4,7 +4,7 @@ import { calculateExperienceYears, calculateCertificationStats, certifications, 
 
 const About = () => {
   const experienceYears = calculateExperienceYears()
-  const certificationStats = calculateCertificationStats(certifications)
+  calculateCertificationStats(certifications)
 
   // Map icon strings to actual icon components
   const iconMap = {
@@ -47,9 +47,11 @@ const About = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">About Me</h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A passionate DevOps/Cloud Engineer with a strong foundation in system administration 
-            and cybersecurity, currently seeking opportunities to contribute to innovative projects.
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed text-balance text-center">
+          I'm a passionate and adaptable IT professional with strong foundational knowledge and growing experience 
+          across cloud infrastructure, cybersecurity, AI, networking, and software development. 
+          <br></br>I thrive in environments where continuous learning and diverse challenges intersect. 
+          <br></br>Currently seeking roles where I can contribute, grow, and explore the evolving landscape of IT.
           </p>
         </div>
 
@@ -57,39 +59,39 @@ const About = () => {
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Left Column - Personal Info */}
           <div className="lg:col-span-1">
-            <div className="bg-card border rounded-xl p-6 sticky top-6">
+            <div className="bg-card border rounded-xl p-6 sticky top-20">
               <h2 className="text-2xl font-bold mb-6">Personal Information</h2>
               
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-muted-foreground" />
                   <div>
-                    <div className="font-medium">Location</div>
-                    <div className="text-sm text-muted-foreground">Toronto, Canada</div>
+                    <div className="font-medium text-left">Location</div>
+                    <div className="text-sm text-muted-foreground text-left">Toronto, Canada</div>
                   </div>
                 </div>
                 
                 <div className="flex items-center space-x-3">
                   <Calendar className="h-5 w-5 text-muted-foreground" />
                   <div>
-                    <div className="font-medium">Experience</div>
-                    <div className="text-sm text-muted-foreground">{experienceYears}+ Years</div>
+                    <div className="font-medium text-left">Experience</div>
+                    <div className="text-sm text-muted-foreground text-left">{experienceYears}+ Years</div>
                   </div>
                 </div>
                 
                 <div className="flex items-center space-x-3">
                   <Users className="h-5 w-5 text-muted-foreground" />
                   <div>
-                    <div className="font-medium">Availability</div>
-                    <div className="text-sm text-muted-foreground">Open to Opportunities</div>
+                    <div className="font-medium text-left">Availability</div>
+                    <div className="text-sm text-muted-foreground text-left">Open to Opportunities</div>
                   </div>
                 </div>
                 
                 <div className="flex items-center space-x-3">
                   <Award className="h-5 w-5 text-muted-foreground" />
                   <div>
-                    <div className="font-medium">Awards</div>
-                    <div className="text-sm text-muted-foreground">2 Professional Awards</div>
+                    <div className="font-medium text-left">Awards</div>
+                    <div className="text-sm text-muted-foreground text-left">2 Professional Awards</div>
                   </div>
                 </div>
               </div>
@@ -117,6 +119,10 @@ const About = () => {
                     <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                     <span className="text-sm">Cybersecurity Analyst</span>
                   </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span className="text-sm">Software Engineer</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -128,22 +134,23 @@ const About = () => {
             <section>
               <h2 className="text-2xl font-bold mb-6">Professional Summary</h2>
               <div className="prose prose-gray max-w-none">
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  I am a Systems & Cloud Administrator with proven success maintaining secure, 
-                  high-availability Linux/Unix environments on AWS and on-premise networks. 
-                  My expertise spans infrastructure automation (Terraform, Jenkins, GitHub Actions), 
-                  CI/CD, containerization (Docker), and network administration (TCP/IP, DNS, VPN).
+                <p className="text-muted-foreground leading-relaxed mb-4 text-left text-balance indent-2">
+                  A results-driven technology professional with proven expertise in designing and implementing 
+                  scalable cloud architectures, automating infrastructure deployment, and optimizing system 
+                  performance across diverse environments. My experience spans from military IT operations 
+                  to leading development teams and architecting cloud-native solutions. I specialize in 
+                  infrastructure as code, CI/CD automation, and security-first approaches, having successfully 
+                  reduced deployment times by 40% and improved system reliability through automated monitoring 
+                  and vulnerability management.
                 </p>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  I am adept at troubleshooting, performance tuning, and enforcing security 
-                  best-practices for mission-critical workloads. My experience includes leading 
-                  teams, mentoring developers, and delivering projects that have received 
-                  recognition for excellence and innovation.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Currently, I am actively seeking opportunities in DevOps/Cloud, System Administration, 
-                  IT Tech Support, and Cybersecurity roles where I can leverage my technical expertise 
-                  and problem-solving skills to contribute to organizational success.
+                <p className="text-muted-foreground leading-relaxed text-left text-balance indent-2">
+                  Beyond technical skills, I bring strong leadership experience from founding and managing 
+                  development teams, mentoring 15+ members, and delivering award-winning projects. I excel 
+                  at stakeholder collaboration, translating complex technical requirements into actionable 
+                  solutions, and driving continuous improvement initiatives. Currently seeking opportunities 
+                  where I can leverage my blend of technical expertise, leadership skills, and proven track 
+                  record of delivering innovative solutions to contribute to organizational growth and 
+                  technological advancement.
                 </p>
               </div>
             </section>
@@ -157,19 +164,16 @@ const About = () => {
                     <GraduationCap className="h-6 w-6 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-2">{education.degree}</h3>
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-3">
+                    <h3 className="text-xl font-semibold mb-2 text-left">{education.degree}</h3>
+                    <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-3 text-left">
                       <span>{education.school}</span>
                       <span>•</span>
                       <span>{education.location}</span>
                       <span>•</span>
                       <span>{education.period}</span>
                     </div>
-                    <div className="mb-4">
-                      <span className="text-sm font-medium">GPA: {education.gpa}</span>
-                    </div>
                     
-                    <h4 className="font-semibold mb-3">Relevant Courses</h4>
+                    <h4 className="font-semibold mb-3 text-left">Relevant Courses</h4>
                     <div className="grid md:grid-cols-2 gap-2">
                       {education.relevantCourses.map((course, index) => (
                         <div key={index} className="flex items-center space-x-2">
@@ -196,7 +200,7 @@ const About = () => {
                           <Icon className="h-5 w-5 text-primary" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-semibold mb-1">{cert.name}</h3>
+                          <h3 className="font-semibold mb-1 text-left text-pretty">{cert.name}</h3>
                           {cert.status ? (
                             <div className="flex items-center space-x-2">
                               <span className="text-sm text-muted-foreground">{cert.status}</span>
@@ -204,7 +208,9 @@ const About = () => {
                               <span className="text-sm text-muted-foreground">Expected {cert.expectedDate}</span>
                             </div>
                           ) : (
-                            <span className="text-sm text-muted-foreground">{cert.year}</span>
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-muted-foreground">{cert.year}</span>
+                            </div>
                           )}
                         </div>
                       </div>

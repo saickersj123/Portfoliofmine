@@ -8,7 +8,7 @@ export interface Education {
 }
 
 export const education: Education = {
-  degree: 'Bachelor of Computer Science',
+  degree: 'Bachelor of Engineering, Information Technology',
   school: 'Sunchon National University',
   location: 'South Korea',
   period: '2021 - 2025',
