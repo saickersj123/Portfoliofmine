@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { Mail, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Mail, MapPin, Github, Linkedin, Send, CheckCircle, AlertCircle } from 'lucide-react'
 import { contactData } from '../lib/data'
+import { initEmailJS, sendEmail } from '../lib/emailjs'
 import type { ContactInfo, SocialLink } from '../lib/data'
 
 const Contact = () => {
@@ -12,6 +13,12 @@ const Contact = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  // Initialize EmailJS on component mount
+  useEffect(() => {
+    initEmailJS()
+  }, [])
 
   // Icon mapping
   const iconMap: { [key: string]: any } = {
@@ -21,6 +28,7 @@ const Contact = () => {
     Linkedin,
     Send,
     CheckCircle,
+    AlertCircle,
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -29,28 +37,47 @@ const Contact = () => {
       ...prev,
       [name]: value
     }))
+    // Clear error when user starts typing
+    if (error) setError(null)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      })
-    }, 3000)
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      }
+
+      const result = await sendEmail(templateParams)
+      
+      if (result.success) {
+        setIsSubmitted(true)
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        })
+        
+        // Reset success state after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false)
+        }, 5000)
+      } else {
+        setError('Failed to send message. Please try again or contact me directly via LinkedIn.')
+      }
+    } catch (err) {
+      setError('An unexpected error occurred. Please try again or contact me directly via LinkedIn.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -193,6 +220,16 @@ const Contact = () => {
                   />
                 </div>
 
+                {/* Error Message */}
+                {error && (
+                  <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+                    <div className="flex items-center space-x-2">
+                      <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
+                      <p className="text-red-600 text-sm font-medium">{error}</p>
+                    </div>
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   disabled={isSubmitting || isSubmitted}
@@ -219,9 +256,12 @@ const Contact = () => {
 
               {isSubmitted && (
                 <div className="mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                  <p className="text-green-600 text-sm font-medium">
-                    {contactData.form.successMessage}
-                  </p>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <p className="text-green-600 text-sm font-medium">
+                      {contactData.form.successMessage}
+                    </p>
+                  </div>
                 </div>
               )}
 
