@@ -178,7 +178,7 @@ const About = () => {
                       {education.relevantCourses.map((course, index) => (
                         <div key={index} className="flex items-center space-x-2">
                           <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                          <span className="text-sm text-muted-foreground">{course}</span>
+                          <span className="text-sm text-foreground/80">{course}</span>
                         </div>
                       ))}
                     </div>
@@ -200,16 +200,19 @@ const About = () => {
                           <Icon className="h-5 w-5 text-primary" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-semibold mb-1 text-left text-pretty">{cert.name}</h3>
-                          {cert.status ? (
-                            <div className="flex items-center space-x-2">
-                              <span className="text-sm text-muted-foreground">{cert.status}</span>
-                              <span className="text-xs text-muted-foreground">•</span>
-                              <span className="text-sm text-muted-foreground">Expected {cert.expectedDate}</span>
-                            </div>
-                          ) : (
-                            <div className="flex justify-between items-center">
-                              <span className="text-sm text-muted-foreground">{cert.year}</span>
+                          <div className="flex items-center space-x-2 mb-2">
+                            <h4 className="font-semibold text-left">{cert.name}</h4>
+                            {cert.status && (
+                              <>
+                                <span className="text-sm text-foreground/80">{cert.status}</span>
+                                <span className="text-xs text-foreground/60">•</span>
+                                <span className="text-sm text-foreground/80">Expected {cert.expectedDate}</span>
+                              </>
+                            )}
+                          </div>
+                          {cert.year && (
+                            <div className="text-sm text-foreground/80 mb-2">
+                              <span>{cert.year}</span>
                             </div>
                           )}
                         </div>

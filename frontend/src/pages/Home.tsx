@@ -142,7 +142,7 @@ const Home = () => {
                     } blur-2xl`}
                   />
                 </div>
-                <p className="text-lg text-muted-foreground max-w-2xl text-left leading-relaxed text-balance">
+                <p className="text-lg text-foreground/80 max-w-2xl mx-auto text-center text-balance">
                   {profile.description}
                 </p>
               </div>
@@ -197,7 +197,7 @@ const Home = () => {
                 <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm text-foreground/80">
                   {stat.label}
                 </div>
               </div>
@@ -213,29 +213,22 @@ const Home = () => {
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
               Areas of Expertise
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center text-balance">
+            <p className="text-lg text-foreground/80 max-w-2xl mx-auto text-center text-balance">
               Specialized in cloud infrastructure, system administration, and cybersecurity 
               with a proven track record of improving system reliability and security.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {highlights.map((highlight) => {
+          <div className="grid md:grid-cols-3 gap-8 mt-16">
+            {highlights.map((highlight, index) => {
               const Icon = highlight.icon
               return (
-                <div
-                  key={highlight.title}
-                  className="p-6 rounded-xl border bg-card hover:shadow-lg transition-shadow"
-                >
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold">
-                      {highlight.title}
-                    </h3>
+                <div key={index} className="bg-card border rounded-xl p-6 text-center">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <Icon className="h-6 w-6 text-primary" />
                   </div>
-                  <p className="text-muted-foreground text-left leading-relaxed">
+                  <h3 className="text-lg font-semibold mb-3">{highlight.title}</h3>
+                  <p className="text-foreground/80 text-left leading-relaxed">
                     {highlight.description}
                   </p>
                 </div>
@@ -252,7 +245,7 @@ const Home = () => {
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
               Currently Seeking Opportunities
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-left leading-relaxed">
+            <p className="text-lg text-foreground/80 max-w-3xl mx-auto text-center leading-relaxed text-balance">
               I'm actively looking for roles where I can leverage my technical expertise 
               and problem-solving skills to contribute to your organization's success.
             </p>
@@ -261,25 +254,25 @@ const Home = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-card border rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-2 text-center">DevOps Engineer</h3>
-              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
+              <p className="text-sm text-foreground/80 text-center leading-relaxed text-balance">
                 CI/CD pipelines,  Cloud platforms, Infrastructure automation
               </p>
             </div>
             <div className="bg-card border rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-2 text-center">System Administrator</h3>
-              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
+              <p className="text-sm text-foreground/80 text-center leading-relaxed text-balance">
                 Linux/Unix systems, <br></br>Network administration
               </p>
             </div>
             <div className="bg-card border rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-2 text-center">IT Tech Support</h3>
-              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
+              <p className="text-sm text-foreground/80 text-center leading-relaxed text-balance">
                  User support, System maintenance, Technical troubleshooting
               </p>
             </div>
             <div className="bg-card border rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-2 text-center">Cybersecurity</h3>
-              <p className="text-sm text-muted-foreground text-center leading-relaxed text-balance">
+              <p className="text-sm text-foreground/80 text-center leading-relaxed text-balance">
                 Vulnerability management, <br></br>Access control, Security hardening
               </p>
             </div>
@@ -293,7 +286,7 @@ const Home = () => {
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             Ready to Work Together?
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90 text-left leading-relaxed">
+          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90 text-center leading-relaxed text-balance">
             Let's discuss how I can help you build robust, secure, and scalable 
             infrastructure solutions for your organization.
           </p>
@@ -304,6 +297,47 @@ const Home = () => {
             Start a Conversation
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">About Me</h2>
+            <p className="text-lg text-foreground/80 max-w-3xl mx-auto text-center leading-relaxed text-balance">
+              I'm a passionate IT professional with expertise in cloud infrastructure, cybersecurity, 
+              and system administration. My journey spans from military IT operations to leading 
+              development teams and architecting cloud-native solutions.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-primary mb-2">Cloud & DevOps</div>
+              <p className="text-sm text-foreground/80 text-center leading-relaxed text-balance">
+                AWS, Azure, Terraform, CI/CD pipelines, Infrastructure as Code
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-primary mb-2">System Administration</div>
+              <p className="text-sm text-foreground/80 text-center leading-relaxed text-balance">
+                Linux/Unix systems, Network administration, Performance optimization
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-primary mb-2">Cybersecurity</div>
+              <p className="text-sm text-foreground/80 text-center leading-relaxed text-balance">
+                Security hardening, Access control, Vulnerability management, Compliance
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-primary mb-2">Leadership</div>
+              <p className="text-sm text-foreground/80 text-center leading-relaxed text-balance">
+                Team management, Project coordination, Mentoring, Stakeholder collaboration
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -73,22 +73,20 @@ const Skills = () => {
 
                       {/* Progress Bar */}
                       <div className="mb-4">
-                        <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
+                        <div className="flex items-center justify-between text-sm text-foreground/80 mb-2">
                           <span>Proficiency</span>
                           <span>{skill.proficiency}%</span>
                         </div>
                         <div className="w-full bg-muted rounded-full h-2">
                           <div
-                            className={`h-2 rounded-full transition-all duration-500 ${getProficiencyColor(
-                              skill.proficiency
-                            )}`}
+                            className="bg-primary h-2 rounded-full transition-all duration-500"
                             style={{ width: `${skill.proficiency}%` }}
                           />
                         </div>
                       </div>
 
                       {/* Details */}
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-foreground/80 leading-relaxed">
                         {skill.details}
                       </p>
                     </div>
@@ -106,19 +104,19 @@ const Skills = () => {
             <div className="grid md:grid-cols-4 gap-6">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary mb-2">{skillStats.totalCategories}</div>
-                <div className="text-sm text-muted-foreground">Skill Categories</div>
+                <div className="text-sm text-foreground/80">Skill Categories</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary mb-2">{totalTechnologies}+</div>
-                <div className="text-sm text-muted-foreground">Technologies</div>
+                <div className="text-sm text-foreground/80">Technologies</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary mb-2">{experienceYears}+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
+                <div className="text-sm text-foreground/80">Years Experience</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary mb-2">{skillStats.averageProficiency}%</div>
-                <div className="text-sm text-muted-foreground">Average Proficiency</div>
+                <div className="text-sm text-foreground/80">Average Proficiency</div>
               </div>
             </div>
           </div>
@@ -130,38 +128,38 @@ const Skills = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-card border rounded-lg p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">Infrastructure as Code</h3>
-              <p className="text-sm text-muted-foreground">
-                Automating infrastructure deployment and management using Terraform and cloud-native tools.
+              <p className="text-sm text-foreground/80">
+                Comprehensive cloud infrastructure management with AWS and Azure, including IAM, networking, and monitoring.
               </p>
             </div>
             <div className="bg-card border rounded-lg p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">CI/CD Automation</h3>
-              <p className="text-sm text-muted-foreground">
-                Building robust deployment pipelines with Jenkins, GitHub Actions, and container orchestration.
+              <p className="text-sm text-foreground/80">
+                Automated CI/CD pipelines using Jenkins and GitHub Actions for efficient software delivery.
               </p>
             </div>
             <div className="bg-card border rounded-lg p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">System Administration</h3>
-              <p className="text-sm text-muted-foreground">
-                Managing Linux/Unix systems, network infrastructure, and performance optimization.
+              <p className="text-sm text-foreground/80">
+                Strong system administration skills in Linux/Unix environments with performance optimization.
               </p>
             </div>
             <div className="bg-card border rounded-lg p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">Security & Compliance</h3>
-              <p className="text-sm text-muted-foreground">
-                Implementing security best practices, vulnerability management, and compliance frameworks.
+              <p className="text-sm text-foreground/80">
+                Network infrastructure management including TCP/IP, DNS, VPN, and DHCP configuration.
               </p>
             </div>
             <div className="bg-card border rounded-lg p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">Troubleshooting</h3>
-              <p className="text-sm text-muted-foreground">
-                Strong problem-solving skills with experience in complex system and network issues.
+              <p className="text-sm text-foreground/80">
+                Cybersecurity expertise in IAM, vulnerability assessment, and security hardening practices.
               </p>
             </div>
             <div className="bg-card border rounded-lg p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">Cloud Architecture</h3>
-              <p className="text-sm text-muted-foreground">
-                Designing scalable, secure, and cost-effective cloud solutions on AWS and Azure.
+              <p className="text-sm text-foreground/80">
+                Programming skills in Python, C, and web technologies for automation and development.
               </p>
             </div>
           </div>
@@ -171,9 +169,10 @@ const Skills = () => {
         <section className="mt-16 text-center">
           <div className="bg-card border rounded-xl p-8">
             <h3 className="text-2xl font-bold mb-4">Ready to Leverage These Skills?</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              I'm excited to apply these skills to your next project. Let's discuss how I can 
-              contribute to your team's success in DevOps, system administration, or cybersecurity.
+            <p className="text-foreground/80 mb-6 max-w-2xl mx-auto">
+              My technical expertise spans across cloud infrastructure, cybersecurity, system administration, 
+              and software development. I specialize in building scalable, secure, and automated solutions 
+              that drive operational efficiency and business value.
             </p>
             <Link
               to="/contact"

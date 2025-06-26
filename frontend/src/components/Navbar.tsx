@@ -28,8 +28,8 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <img src={logo} alt="Logo" className="h-full w-full object-cover" />
+            <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
+              <img src={logo} alt="Logo" className="h-full w-full object-cover rounded-full" />
             </div>
             <span className="text-xl font-bold">Flynn Park</span>
           </Link>

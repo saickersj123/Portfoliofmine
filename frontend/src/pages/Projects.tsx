@@ -19,7 +19,7 @@ const Projects = () => {
       'Audio Processing': 'bg-pink-500/10 text-pink-600',
       'Education': 'bg-yellow-500/10 text-yellow-600',
     }
-    return colors[category as keyof typeof colors] || 'bg-gray-500/10 text-gray-600'
+    return colors[category as keyof typeof colors] || 'bg-slate-500/10 text-slate-700 dark:text-slate-300'
   }
 
   return (
@@ -97,13 +97,13 @@ const Projects = () => {
                     {project.technologies.slice(0, 5).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground"
+                        className="px-2 py-1 bg-muted rounded text-xs text-foreground/80"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 5 && (
-                      <span className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground">
+                      <span className="px-2 py-1 bg-muted rounded text-xs text-foreground/80">
                         +{project.technologies.length - 5} more
                       </span>
                     )}
@@ -115,7 +115,7 @@ const Projects = () => {
                       {Object.entries(project.stats).map(([key, value]) => (
                         <div key={key} className="text-center">
                           <div className="text-sm font-semibold">{value}</div>
-                          <div className="text-xs text-muted-foreground capitalize">
+                          <div className="text-xs text-foreground/70 capitalize">
                             {key.replace(/([A-Z])/g, ' $1').trim()}
                           </div>
                         </div>
@@ -185,7 +185,7 @@ const Projects = () => {
                       </span>
                     ))}
                     {project.categories.length > 3 && (
-                      <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-500/10 text-gray-600">
+                      <span className="px-2 py-1 rounded-full text-xs font-medium bg-slate-500/10 text-slate-700 dark:text-slate-300">
                         +{project.categories.length - 3}
                       </span>
                     )}
@@ -196,13 +196,13 @@ const Projects = () => {
                     {project.technologies.slice(0, 4).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground"
+                        className="px-2 py-1 bg-muted rounded text-xs text-foreground/80"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 4 && (
-                      <span className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground">
+                      <span className="px-2 py-1 bg-muted rounded text-xs text-foreground/80">
                         +{project.technologies.length - 4}
                       </span>
                     )}

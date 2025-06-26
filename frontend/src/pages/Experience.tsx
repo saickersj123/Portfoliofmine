@@ -20,13 +20,16 @@ const Experience = () => {
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      'Cloud & DevOps': 'bg-blue-500/10 text-blue-600',
-      'Cybersecurity & Cloud': 'bg-purple-500/10 text-purple-600',
-      'Leadership & Development': 'bg-green-500/10 text-green-600',
-      'Education': 'bg-yellow-500/10 text-yellow-600',
-      'System Administration': 'bg-red-500/10 text-red-600',
+      'Military': 'bg-red-500/10 text-red-600',
+      'Software Development': 'bg-blue-500/10 text-blue-600',
+      'Cloud Infrastructure': 'bg-purple-500/10 text-purple-600',
+      'DevOps': 'bg-green-500/10 text-green-600',
+      'Cybersecurity': 'bg-orange-500/10 text-orange-600',
+      'Leadership': 'bg-indigo-500/10 text-indigo-600',
+      'System Administration': 'bg-cyan-500/10 text-cyan-600',
+      'IT Support': 'bg-teal-500/10 text-teal-600',
     }
-    return colors[category as keyof typeof colors] || 'bg-gray-500/10 text-gray-600'
+    return colors[category as keyof typeof colors] || 'bg-slate-500/10 text-slate-700 dark:text-slate-300'
   }
 
   const getCategoryIcon = (category: string) => {
@@ -124,11 +127,11 @@ const Experience = () => {
                 {/* Technologies */}
                 <div>
                   <h3 className="text-lg font-semibold mb-3 text-left indent-2">Technologies & Skills</h3>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {experience.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-muted rounded-full text-xs text-muted-foreground"
+                        className="px-2 py-1 bg-muted rounded text-xs text-foreground/80"
                       >
                         {tech}
                       </span>

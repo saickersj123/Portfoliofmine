@@ -114,7 +114,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <div className="font-semibold text-foreground text-left">{info.label}</div>
-                        <div className="text-muted-foreground group-hover:text-foreground transition-colors text-sm">{info.value}</div>
+                        <div className="text-foreground/80 group-hover:text-foreground transition-colors text-sm">{info.value}</div>
                       </div>
                     </a>
                   )
@@ -140,7 +140,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <div className="font-semibold text-foreground text-left">{link.name}</div>
-                        <div className="text-muted-foreground group-hover:text-foreground transition-colors text-sm">{link.description}</div>
+                        <div className="text-foreground/80 group-hover:text-foreground transition-colors text-sm">{link.description}</div>
                       </div>
                     </a>
                   )
@@ -278,7 +278,7 @@ const Contact = () => {
         <div className="mt-8">
           <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 rounded-xl p-6 border border-primary/20 shadow-lg">
             <h3 className="text-lg font-bold mb-4 text-primary">{contactData.callToAction.title}</h3>
-            <p className="text-muted-foreground mb-5 text-sm">
+            <p className="text-foreground/80 mb-5 text-sm">
               {contactData.callToAction.description}
             </p>
             <div className="flex justify-center">
